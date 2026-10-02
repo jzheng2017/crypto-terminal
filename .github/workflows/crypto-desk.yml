@@ -1,0 +1,46 @@
+name: Crypto desk
+on:
+  push:
+    paths:
+      [
+        'src/**',
+        'shared/**',
+        'server/**',
+        'tests/**',
+        'package*.json',
+        'vite.config.ts',
+        'tsconfig.json',
+        'index.html',
+        '.github/workflows/crypto-desk.yml',
+      ]
+  pull_request:
+    paths:
+      [
+        'src/**',
+        'shared/**',
+        'server/**',
+        'tests/**',
+        'package*.json',
+        'vite.config.ts',
+        'tsconfig.json',
+        'index.html',
+        '.github/workflows/crypto-desk.yml',
+      ]
+permissions:
+  contents: read
+jobs:
+  check:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: npm run check

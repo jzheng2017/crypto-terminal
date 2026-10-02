@@ -1,6 +1,12 @@
 # .gitignore — Fincept Terminal (Qt6 / C++20)
 # ============================================================
 
+# Tape crypto desk
+node_modules/
+dist/
+coverage/
+artifacts/
+
 # ── CMake user presets (local paths — never commit) ─────────
 CMakeUserPresets.json
 fincept-qt/CMakeUserPresets.json
@@ -195,3 +201,5 @@ fincept-qt/docs/CRYPTO_WALLET_CONNECT.md
 *.md
 !README.md
 !**/README.md
+!docs/CRYPTO_DESK.md
+!docs/UPSTREAM_README.md
